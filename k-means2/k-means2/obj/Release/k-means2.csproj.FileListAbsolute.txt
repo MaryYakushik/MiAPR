@@ -1,0 +1,8 @@
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\bin\Release\k-means2.exe.config
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\bin\Release\k-means2.exe
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\bin\Release\k-means2.pdb
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\obj\Release\k_means2.Form1.resources
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\obj\Release\k_means2.Properties.Resources.resources
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\obj\Release\k-means2.csproj.GenerateResource.Cache
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\obj\Release\k-means2.exe
+D:\учеба\3 курс\2 сем\МИАПР\k-means2\k-means2\obj\Release\k-means2.pdb
