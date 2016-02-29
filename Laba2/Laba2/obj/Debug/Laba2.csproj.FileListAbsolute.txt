@@ -7,3 +7,6 @@ D:\учеба\3 курс\2 сем\МИАПР\Laba2\Laba2\obj\Debug\Laba2.Propert
 D:\учеба\3 курс\2 сем\МИАПР\Laba2\Laba2\obj\Debug\Laba2.csproj.GenerateResource.Cache
 D:\учеба\3 курс\2 сем\МИАПР\Laba2\Laba2\obj\Debug\Laba2.exe
 D:\учеба\3 курс\2 сем\МИАПР\Laba2\Laba2\obj\Debug\Laba2.pdb
+D:\учеба\3 курс\2 сем\MiAPR\Laba2\Laba2\bin\Debug\Laba2.exe.config
+D:\учеба\3 курс\2 сем\MiAPR\Laba2\Laba2\obj\Debug\Laba2.exe
+D:\учеба\3 курс\2 сем\MiAPR\Laba2\Laba2\obj\Debug\Laba2.pdb

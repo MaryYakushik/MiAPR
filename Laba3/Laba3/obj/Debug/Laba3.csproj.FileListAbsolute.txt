@@ -1,0 +1,9 @@
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\bin\Debug\Laba3.exe.config
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\bin\Debug\Laba3.exe
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\bin\Debug\Laba3.pdb
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.csprojResolveAssemblyReference.cache
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.Form1.resources
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.Properties.Resources.resources
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.csproj.GenerateResource.Cache
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.exe
+D:\учеба\3 курс\2 сем\MiAPR\Laba3\Laba3\obj\Debug\Laba3.pdb
