@@ -41,7 +41,7 @@ namespace Laba3
                 List<int> points1 = new List<int>();
                 List<int> points2 = new List<int>();
 
-                if(PC1 + PC2 - 1 < 0.00000000001)
+                if(PC1 + PC2 - 1 < 0.00000000001 && PC1 + PC2 - 1 >= 0 )
                 {
                     Random r = new Random();
                     double mu1 = 0;
@@ -68,8 +68,10 @@ namespace Laba3
 
                     double p1 = 0;
                     double p2 = 0;
+                    Point point = new Point();
                     Color c1 = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
                     Color c2 = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+                    bool t = false;
                     for(int i = 0; i < pointsCount; i++)
                     {
                         p1 = Math.Exp(-0.5 * Math.Pow((i - mu1) / sigma1, 2)) /
@@ -80,8 +82,81 @@ namespace Laba3
                              i, pictureBox1.Height - (int) (p1 * PC1 * 150000), 3, 3);
                         bufferedGraphics.Graphics.FillRectangle(new SolidBrush(c2),
                              i, pictureBox1.Height - (int) (p2 * PC2 * 150000), 3, 3);
+                        if ((int)(p1 * PC1 * 150000) == (int)(p2 * PC2 * 150000) && !t)
+                        {
+                            point.X = i;
+                            point.Y = (int)(p1 * PC1 * 150000);
+                            Point point2 = new Point();
+                            point2.X = i;
+                            point2.Y = 0;
+                            bufferedGraphics.Graphics.FillRectangle(new SolidBrush(Color.Black),
+                            i, 0, 2, pictureBox1.Height);
+                            t = true;
+                               // (new SolidBrush(c2),
+                          //  i, pictureBox1.Height - (int)(p2 * PC2 * 150000), 3, 3);
+                        }
+
                     }
                     bufferedGraphics.Render();
+
+
+                    double falseAlarmError = 0;
+
+                    double x = -100;
+                    p1 = 1;
+                    p2 = 0;
+                    if (PC2 != 0)
+                        while (p2 < p1)
+                        {
+                            p1 = PC1 * Math.Exp(-0.5 * Math.Pow((x - mu1) / sigma1, 2)) /
+                                (sigma1 * Math.Sqrt(2 * Math.PI));
+                            p2 = PC2 * Math.Exp(-0.5 * Math.Pow((x - mu2) / sigma2, 2)) /
+                                (sigma2 * Math.Sqrt(2 * Math.PI));
+                            falseAlarmError += p2 * 0.001;
+                            x += 0.001;
+                        }
+                    double borderX = x;
+                    double missingDetectingError = 0;
+                    while (x < pictureBox1.Width + 100)
+                    {
+                        p1 = Math.Exp(-0.5 * Math.Pow((x - mu1) / sigma1, 2)) /
+                            (sigma1 * Math.Sqrt(2 * Math.PI));
+                        p2 = Math.Exp(-0.5 * Math.Pow((x - mu2) / sigma2, 2)) /
+                            (sigma2 * Math.Sqrt(2 * Math.PI));
+                        missingDetectingError += p1 * PC1 * 0.001;
+                        x += 0.001;
+                    }
+
+                    bufferedGraphics.Graphics.DrawLine(new Pen(Color.Green, 3),
+                        (int)(borderX), 0, (int)(borderX), pictureBox1.Height);
+
+                    double totalClassificationError = 0;
+                    if (PC1 == 0)
+                    {
+                        falseAlarmError = 1;
+                        missingDetectingError = 0;
+                        totalClassificationError = 1;
+                    }
+                    else
+                    {
+                        if (PC2 == 0)
+                        {
+                            falseAlarmError = 0;
+                            missingDetectingError = 0;
+                            totalClassificationError = 0;
+                        }
+                        else
+                        {
+                            falseAlarmError /= PC1;
+                            missingDetectingError /= PC1;
+                        }
+                    }
+
+                    totalClassificationError = falseAlarmError + missingDetectingError;
+                    textBox3.Text = falseAlarmError.ToString();
+                    textBox4.Text = missingDetectingError.ToString();
+                    textBox5.Text = totalClassificationError.ToString();
+
                 }
                 else
                 {
