@@ -89,13 +89,13 @@ namespace Laba2
 
         public void setRandomCenter()
         {
-            int randomNumber = r.Next(points.Count);
-            Point p = new Point();
-            p.x = points[randomNumber].x;
-            p.y = points[randomNumber].y;
-            p.numberOfCenter = randomNumber;
-            centers.Add(p);
-            numbersOfCenters.Add(randomNumber);
+                int randomNumber = r.Next(points.Count);
+                Point p = new Point();
+                p.x = points[randomNumber].x;
+                p.y = points[randomNumber].y;
+                p.numberOfCenter = randomNumber;
+                centers.Add(p);
+                numbersOfCenters.Add(randomNumber);
         }
 
 

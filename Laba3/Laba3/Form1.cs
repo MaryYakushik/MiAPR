@@ -44,7 +44,7 @@ namespace Laba3
                 if(PC1 + PC2 - 1 < 0.00000000001 && PC1 + PC2 - 1 >= 0 )
                 {
                     Random r = new Random();
-                    double mu1 = 0;
+                    double mu1 = 0; // математическое ожидание 
                     double mu2 = 0;
                     for (int i = 0; i < pointsCount; i++)
                     {
@@ -60,7 +60,7 @@ namespace Laba3
                     double sigma2 = 0;
                     for (int i = 0; i < pointsCount; i++)
                     {
-                        sigma1 += Math.Pow(points1[i] - mu1, 2);
+                        sigma1 += Math.Pow(points1[i] - mu1, 2); // среднеквадратичное отклонение
                         sigma2 += Math.Pow(points2[i] - mu2, 2);
                     }
                     sigma1 = Math.Sqrt(sigma1 / pointsCount);
@@ -74,7 +74,7 @@ namespace Laba3
                     bool t = false;
                     for(int i = 0; i < pointsCount; i++)
                     {
-                        p1 = Math.Exp(-0.5 * Math.Pow((i - mu1) / sigma1, 2)) /
+                        p1 = Math.Exp(-0.5 * Math.Pow((i - mu1) / sigma1, 2)) / //апостериорная плотность вероятности 
                             (sigma1 * Math.Sqrt(2 * Math.PI));
                         p2 = Math.Exp(-0.5 * Math.Pow((i - mu2) / sigma2, 2)) /
                              (sigma2 * Math.Sqrt(2 * Math.PI));
@@ -92,15 +92,13 @@ namespace Laba3
                             bufferedGraphics.Graphics.FillRectangle(new SolidBrush(Color.Black),
                             i, 0, 2, pictureBox1.Height);
                             t = true;
-                               // (new SolidBrush(c2),
-                          //  i, pictureBox1.Height - (int)(p2 * PC2 * 150000), 3, 3);
                         }
 
                     }
                     bufferedGraphics.Render();
 
 
-                    double falseAlarmError = 0;
+                    double falseAlarmError = 0; // вероятность ложной тревоги
 
                     double x = -100;
                     p1 = 1;
@@ -112,25 +110,25 @@ namespace Laba3
                                 (sigma1 * Math.Sqrt(2 * Math.PI));
                             p2 = PC2 * Math.Exp(-0.5 * Math.Pow((x - mu2) / sigma2, 2)) /
                                 (sigma2 * Math.Sqrt(2 * Math.PI));
-                            falseAlarmError += p2 * 0.001;
+                            falseAlarmError += p2 * 0.001;  // вероятность ложной тревоги
                             x += 0.001;
                         }
                     double borderX = x;
-                    double missingDetectingError = 0;
+                    double missingDetectingError = 0; // вероятность пропуска обнаружения ошибки
                     while (x < pictureBox1.Width + 100)
                     {
                         p1 = Math.Exp(-0.5 * Math.Pow((x - mu1) / sigma1, 2)) /
                             (sigma1 * Math.Sqrt(2 * Math.PI));
                         p2 = Math.Exp(-0.5 * Math.Pow((x - mu2) / sigma2, 2)) /
                             (sigma2 * Math.Sqrt(2 * Math.PI));
-                        missingDetectingError += p1 * PC1 * 0.001;
+                        missingDetectingError += p1 * PC1 * 0.001; // вероятность пропуска обнаружения ошибки
                         x += 0.001;
                     }
 
                     bufferedGraphics.Graphics.DrawLine(new Pen(Color.Green, 3),
                         (int)(borderX), 0, (int)(borderX), pictureBox1.Height);
 
-                    double totalClassificationError = 0;
+                    double totalClassificationError = 0; // вероятность суммарной ошибки классификации
                     if (PC1 == 0)
                     {
                         falseAlarmError = 1;
